@@ -86,4 +86,18 @@ function get_attached_images( $args=null )
 	}
 }
 
+function illustrienne_widgets()
+{
+	register_sidebar( array( 
+		'name' => 'Blog sidebar',
+		'id' => 'sidebar',
+		'before_widget' => '',
+		'after_widget' => '',
+		'before_title' => '<h2>',
+		'after_title' => '</h2>'
+	) );
+}
+
+add_action( 'widgets_init', 'illustrienne_widgets' );
+
 ?>

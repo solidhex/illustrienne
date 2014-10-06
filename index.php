@@ -1,29 +1,56 @@
-<!doctype html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title><?php bloginfo( 'name' ); ?> | <?php bloginfo( 'description' ); ?></title>
-	<link rel="stylesheet" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
-	<?php 
-	    /* Always have wp_head() just before the closing </head>
-	     * tag of your theme, or you will break many plugins, which
-	     * generally use this hook to add elements to <head> such
-	     * as styles, scripts, and meta tags.
-	     */
-	    wp_head();
-	 ?>
-</head>
-<body <?php body_class(); ?>>
-	
-<div id="container">
-	<header>
-		
-	</header>
-	<div id="main" role="main">
-		
-	</div>
-</div>	
+<?php
+	get_header();
+?>
+
+    <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+				
+				<?php if ( has_post_thumbnail() ) {
+					the_post_thumbnail();
+				} ?>
+				
+				<header class="entry-header">
+					
+					<?php if ( is_single() ) : ?>
+					<h1 class="entry-title"><?php the_title(); ?></h1>
+					<?php else : ?>
+					<h1 class="entry-title">
+						<a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a>
+					</h1>
+					<?php endif; // is_single() ?>
+					
+				</header>
+				
+				<div class="entry-content">
+					<?php the_content(); ?>
+				</div>
+				
+			</article>
+    <?php endwhile; else : ?>
+
+    	<!-- The very first "if" tested to see if there were any Posts to -->
+    	<!-- display.  This "else" part tells what do if there weren't any. -->
+    	<p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
+
+
+    	<!-- REALLY stop The Loop. -->
+    <?php endif; ?>
+
+	</div><!-- eof #main -->
+	<aside role="complementary">
+		<?php if ( is_active_sidebar ('sidebar') ): ?>
+			<?php dynamic_sidebar( 'sidebar' ); ?>
+		<?php endif ?>
+	</aside>
+</div><!-- eof #container -->
+
+<footer>
+	<section>
+		<span class="sosumi">
+			&copy; <?php echo date( 'Y' ); ?> The Illustrienne. All Rights Reserved.
+		</span>
+	</section>
+</footer>
 
 <?php
    /* Always have wp_footer() just before the closing </body>

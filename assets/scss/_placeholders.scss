@@ -1,0 +1,17 @@
+%wrapper {
+	width: 1008px;
+	margin: 0 auto;
+}
+
+%clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+%frame {
+	border: 7px solid #fff;
+	@include box-shadow(0 0 4px rgba(191,191,192,.58));
+}
