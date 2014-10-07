@@ -34,6 +34,8 @@ $link-color: #777 !default;
 
 @import "typography/futura";
 @import "typography/garamond";
+@import "typography/engraverslh";
+@import "typography/caslon";
 
 
 /**
@@ -143,11 +145,41 @@ body {
 		}
 		nav {
 			float: right;
+			padding: 62px 0 0 24px;
 			width: 450px;
 			text-align: right;
 			ul {
 				> li {
 					display: inline-block;
+					a {
+						color: #404041;
+						font-size: 11px;
+						letter-spacing: 1.1px;
+						text-decoration: none;
+						text-transform: uppercase;
+						@include transition(color 250ms cubic-bezier(0.420, 0.000, 0.580, 1.000));
+						&:hover {
+							color: #777;
+						}
+					}
+					&:first-child {
+						padding: 0 33px 0 0;
+					}
+					&:nth-child(2) {
+						padding: 0 34px 0 0;
+						a {
+							font: 15px 'engravers';
+							letter-spacing: 0.75px;
+						}
+					}
+					&:nth-child(4) {
+						a {
+							padding: 0 11px 0 28px;
+							font: 18px 'CaslonNo337-Ita';
+							letter-spacing: 0.9px;
+							text-transform: lowercase;
+						}
+					}
 				}
 			}
 		}
@@ -155,8 +187,6 @@ body {
 	> [role='main'] {
 		float: left;
 		width: 674px;
-/*		background-color: wheat;*/
-		// blog post format
 		> article {			
 			img:first-of-type {
 				@extend %frame;
@@ -190,6 +220,7 @@ body {
 		h2 {
 			margin: 0 0 6px;
 			font: 24px 'futura_light';
+			letter-spacing: 2.4px;
 			text-transform: uppercase;
 			text-align: center;
 		}
