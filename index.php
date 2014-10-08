@@ -35,28 +35,16 @@
     <?php endif; ?>
 
 	</div><!-- eof #main -->
+	
 	<aside role="complementary">
+		
+		<?php get_template_part( 'partials/social' ); ?>
+		
 		<?php if ( is_active_sidebar ('sidebar') ): ?>
 			<?php dynamic_sidebar( 'sidebar' ); ?>
 		<?php endif ?>
+		
 	</aside>
 </div><!-- eof #container -->
 
-<footer>
-	<section>
-		<span class="sosumi">
-			&copy; <?php echo date( 'Y' ); ?> The Illustrienne. All Rights Reserved.
-		</span>
-	</section>
-</footer>
-
-<?php
-   /* Always have wp_footer() just before the closing </body>
-    * tag of your theme, or you will break many plugins, which
-    * generally use this hook to reference JavaScript files.
-    */
-    wp_footer();
-?>
-
-</body>
-</html>
+<?php get_footer(); ?>

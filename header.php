@@ -18,8 +18,7 @@
 <body <?php body_class(); ?>>
 	
 <div id="container">
-	<header>
-		<a href="<?php bloginfo( 'url' ); ?>"><img src="<?php bloginfo( 'template_directory' ); ?>/assets/img/logo.gif" alt="The Illustrienne" id="logo"></a>
-		<?php wp_nav_menu( array( 'menu' => 'Blog', 'container' => 'nav' ) ); ?>
+	<header class="nav">
+		<?php get_template_part( 'partials/nav' ); ?>
 	</header>
 	<div id="main" role="main">

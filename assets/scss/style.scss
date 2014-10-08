@@ -19,6 +19,7 @@ CaslonC337 ItlSC
 @import "compass/utilities";
 @import "compass/reset";
 @import "compass/css3";
+@import "compass/utilities/sprites";
 
 /**
 * Set Variables
@@ -63,6 +64,13 @@ $link-color: #777 !default;
 */
 
 //@import "views/portfolio";
+
+/**
+* Import Sprite Sheets
+*/
+
+@import "icons/footer/*.png";
+@import "icons/sidebar/*.png";
 
 
 /**
@@ -114,75 +122,139 @@ pre {
  * Layout
  */
 
+.nav {
+	@extend %clearfix;
+	#logo {
+		float: left;
+	}
+	nav {
+		float: right;
+		padding: 62px 0 0 24px;
+		width: 450px;
+		text-align: right;
+		ul {
+			> li {
+				display: inline-block;
+				a {
+					color: #404041;
+					font-size: 11px;
+					letter-spacing: 1.1px;
+					text-decoration: none;
+					text-transform: uppercase;
+					@include transition(color 250ms cubic-bezier(0.420, 0.000, 0.580, 1.000));
+					&:hover {
+						color: #777;
+					}
+				}
+				&:first-child {
+					padding: 0 33px 0 0;
+				}
+				&:nth-child(2) {
+					padding: 0 34px 0 0;
+					a {
+						font: 15px 'engravers';
+						letter-spacing: 0.75px;
+					}
+				}
+				&:nth-child(4) {
+					a {
+						padding: 0 11px 0 28px;
+						font: 18px 'CaslonNo337-Ita';
+						letter-spacing: 0.9px;
+						text-transform: lowercase;
+					}
+				}
+			}
+		}
+	}
+}
+
 body {
 	> footer {
-		height: 40px;
-		background-color: #222;
-		color: #9f9e9e;
+		height: 196px;
+		position: relative;
 		> section {
 			@extend %wrapper;
-			.sosumi {
-				font: 11px/40px Arial, sans-serif;
+			height: 157px;
+			.nav { 
+				nav {
+					float: left;
+					padding: 68px 0 0 28px;
+					text-align: left;
+				}
+				#logo {
+					margin: 13px 0 0 0;
+					width: 512px;
+				}
 			}
+		}
+		.colophon {
+			height: 40px;
+			overflow: hidden;
+			background-color: #222;
+			> div {
+				@extend %wrapper;
+			}
+			.sosumi {
+				float: left;
+				color: #9f9e9e;
+				font: 11px/40px Arial, sans-serif;
+				.credits {
+					font-size: 12px;
+					font-family: 'garamond';
+					a {
+						color: inherit;
+					}
+				}
+			}
+			.sharing {
+				float: right;
+				padding: 9px 0 0 0;
+				font-size: 0;
+				a {
+					display: inline-block;
+					margin: 0 0 0 5px;
+					width: 21px;
+					height: 21px;
+					&.fb {
+						@include footer-sprite(fb);
+					}
+					&.pinterest {
+						@include footer-sprite(pinterest);
+					}
+					&.twitter {
+						@include footer-sprite(twitter);
+					}
+					&.instagram {
+						@include footer-sprite(instagram);
+					}
+					&:last-child {
+						margin-right: 53px;
+					}
+				}
+			}
+		}
+		&:before {
+			content: "";
+			position: absolute;
+			top: -3px;
+			width: 100%;
+			height: 3px;
+			background: transparent url('./assets/img/footer-shadow.png') 0 0 repeat-x;
 		}
 	}
 }
 
 #container {
 	min-height: 100%;
+	padding: 0 0 45px;
 	@extend %wrapper;
 	@extend %clearfix;
-	margin-bottom: -40px;
+	margin-bottom: -196px;
 	&:after {
 		content: "";
 		display: block;
-		height: 40px;
-	}
-	> header {
-		@extend %clearfix;
-		#logo {
-			float: left;
-		}
-		nav {
-			float: right;
-			padding: 62px 0 0 24px;
-			width: 450px;
-			text-align: right;
-			ul {
-				> li {
-					display: inline-block;
-					a {
-						color: #404041;
-						font-size: 11px;
-						letter-spacing: 1.1px;
-						text-decoration: none;
-						text-transform: uppercase;
-						@include transition(color 250ms cubic-bezier(0.420, 0.000, 0.580, 1.000));
-						&:hover {
-							color: #777;
-						}
-					}
-					&:first-child {
-						padding: 0 33px 0 0;
-					}
-					&:nth-child(2) {
-						padding: 0 34px 0 0;
-						a {
-							font: 15px 'engravers';
-							letter-spacing: 0.75px;
-						}
-					}
-					&:nth-child(4) {
-						a {
-							padding: 0 11px 0 28px;
-							font: 18px 'CaslonNo337-Ita';
-							letter-spacing: 0.9px;
-							text-transform: lowercase;
-						}
-					}
-				}
-			}
-		}
+		height: 196px;
 	}
 	> [role='main'] {
 		float: left;
@@ -211,6 +283,30 @@ body {
 		float: right;
 		width: 320px;
 		color: #404041;
+		.sharing {
+			margin: 7px 0 23px;
+			font-size: 0;
+			text-align: center;
+			line-height: 1;
+			a {
+				display: inline-block;
+				width: 21px;
+				height: 21px;
+				margin: 0 5px 0 0;
+				&.fb {
+					@include sidebar-sprite(fb);
+				}
+				&.pinterest {
+					@include sidebar-sprite(pinterest);
+				}
+				&.twitter {
+					@include sidebar-sprite(twitter);
+				}
+				&.instagram {
+					@include sidebar-sprite(instagram);
+				}
+			}
+		}
 		.simple-image {
 			margin: 0 0 28px;
 			img {
