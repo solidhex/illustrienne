@@ -118,6 +118,17 @@ pre {
 	white-space: pre-wrap;
 }
 
+input {
+	&[type='text'],
+	&[type='search']
+	{
+		border: 1px solid #d9d7d3;
+		padding: 7px 12px 7px;
+		font: 13px Arial, sans-serif;
+		text-indent: 12px;
+	}
+}
+
 /**
  * Layout
  */
@@ -339,6 +350,102 @@ body {
 				font: 14px 'garamond', serif;
 				text-transform: none;
 			}
+		}
+		.favorites {
+			h2 {
+				margin: 18px 0 16px;
+				color: #222;
+				font-size: 12px;
+				line-height: 22px;
+				letter-spacing: 0.6px;
+			}
+			> div {
+				@include box-shadow(0 0 4px rgba(191,191,192,.58));
+				padding: 20px 0 0 0;
+				ul {
+					@extend %clearfix;
+					padding: 0 0 0 20px;
+					> li {
+						a {
+							color: #404041;
+							text-decoration: none;
+						}
+						cursor: pointer;
+						float: left;
+						margin: 0 24px 0 0;
+						padding: 0 0 26px 0;
+						width: 128px;
+						&:nth-child(even) {
+							margin-right: 0;
+						}
+						h3 {
+							margin: 12px 0 0 0;
+							font-size: 12px;
+							line-height: 18px;
+							text-align: center;
+						}
+						figure {
+							position: relative;
+							&:hover {
+								figcaption {
+									opacity: 1;
+								}
+							}
+							figcaption {
+								opacity: 0;
+								position: absolute;
+								top: 0;
+								right: 0;
+								bottom: 0;
+								left: 0;
+								background: rgba(0, 0, 0, 0.5);
+								@include transition(opacity 250ms cubic-bezier(0.420, 0.000, 0.580, 1.000));
+								section {
+									display: table;
+									height: 100%;
+									width: 100%;
+									.isbn {
+										padding: 1em;
+										color: #fff;
+										display: table-cell;
+										text-align: center;
+										vertical-align: middle;
+										.separator,
+										.no,
+										.issue
+										{
+											display: inline-block;
+											font-family: 'CaslonNo337-Ita';
+										}
+										.separator {
+											font-size: 19px;
+										}
+										.no {
+											margin: -5px 0 0 0;
+											font-size: 13px;
+											vertical-align: top;
+										}
+										.issue {
+											display: inline-block;
+											font: 16px 'engravers';
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	.search-form {
+		margin: 32px 0 38px;
+		[type='search'] {
+			display: block;
+			width: 228px;
+			margin: 0 auto;
+			padding-right: 27px;
+			background: transparent url('./assets/img/search.png') 95% 6px no-repeat;
 		}
 	}
 }
