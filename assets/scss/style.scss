@@ -71,6 +71,7 @@ $link-color: #777 !default;
 
 @import "icons/footer/*.png";
 @import "icons/sidebar/*.png";
+@import "icons/post/*.png";
 
 
 /**
@@ -127,6 +128,44 @@ input {
 		font: 13px Arial, sans-serif;
 		text-indent: 12px;
 	}
+}
+
+/**
+ * Global
+ */
+
+.isbn {
+	.separator,
+	.no,
+	.issue
+	{
+		display: inline-block;
+		font-family: 'CaslonNo337-Ita';
+	}
+	.separator {
+		color: #6e6e72;
+		font-size: 24px;
+	}
+	.no {
+		margin: -7px 0 0 0;
+		font-size: 15px;
+		vertical-align: top;
+		color: #404041;
+	}
+	.issue {
+		display: inline-block;
+		color: #404041;
+		font-family: 'engravers';
+		font-size: 18px;
+	}
+}
+
+.sub-title {
+	color: #222;
+	font-size: 11px;
+	font-family: 'futura';
+	letter-spacing: 0.55px;
+	text-transform: uppercase;
 }
 
 /**
@@ -227,6 +266,7 @@ body {
 					margin: 0 0 0 5px;
 					width: 21px;
 					height: 21px;
+					@include transition(opacity 250ms cubic-bezier(0.420, 0.000, 0.580, 1.000));
 					&.fb {
 						@include footer-sprite(fb);
 					}
@@ -241,6 +281,9 @@ body {
 					}
 					&:last-child {
 						margin-right: 53px;
+					}
+					&:hover {
+						opacity: 0.75;
 					}
 				}
 			}
@@ -278,14 +321,75 @@ body {
 				box-sizing: content-box;
 			}
 			> header {
+				position: relative;
 				text-align: center;
+				.isbn {
+					position: absolute;
+					top: -42px;
+					right: 25px;
+				}
 				h1 {
+					margin: 60px 0 3px;
 					color: #222;
 					font: 24px/26px 'garamond', georgia, serif;
 					a {
 						color: inherit;
 						text-decoration: none;
 					}
+				}
+				h2 {
+					margin: 0 0 26px;
+					color: #404041;
+					font-size: 9.5px;
+					letter-spacing: 0.7125px;
+					text-transform: uppercase;
+					a {
+						color: inherit;
+						text-decoration: none;
+					}
+				}
+			}
+			.shop-the-post {
+				color: #222;
+				h2 {
+					@extend %sub-title;
+				}
+				a {
+					color: inherit;
+					font: 14px 'garamond';
+				}
+			}
+			.share {
+				display: inline-block;
+				h2 {
+					display: inline-block;
+				}
+				a {
+					display: inline-block;
+					margin: 0 2px 0 0;
+					width: 18px;
+					height: 18px;
+					vertical-align: middle;
+					&.fb {
+						@include post-sprite(fb);
+					}
+					&.twitter {
+						@include post-sprite(twitter);
+					}
+					&.pinterest {
+						@include post-sprite(pinterest);
+					}
+					&.tumblr {
+						@include post-sprite(tumblr);
+					}
+				}
+			}
+			.posted {
+				color: #908f8f;
+				font-size: 11px;
+				a {
+					color: inherit;
+					text-decoration: none;
 				}
 			}
 		}
@@ -304,6 +408,7 @@ body {
 				width: 21px;
 				height: 21px;
 				margin: 0 5px 0 0;
+				@include transition(opacity 250ms cubic-bezier(0.420, 0.000, 0.580, 1.000));
 				&.fb {
 					@include sidebar-sprite(fb);
 				}
@@ -315,6 +420,9 @@ body {
 				}
 				&.instagram {
 					@include sidebar-sprite(instagram);
+				}
+				&:hover {
+					opacity: 0.75;
 				}
 			}
 		}
@@ -406,7 +514,6 @@ body {
 									width: 100%;
 									.isbn {
 										padding: 1em;
-										color: #fff;
 										display: table-cell;
 										text-align: center;
 										vertical-align: middle;
@@ -414,8 +521,7 @@ body {
 										.no,
 										.issue
 										{
-											display: inline-block;
-											font-family: 'CaslonNo337-Ita';
+											color: #fff;
 										}
 										.separator {
 											font-size: 19px;
@@ -426,8 +532,7 @@ body {
 											vertical-align: top;
 										}
 										.issue {
-											display: inline-block;
-											font: 16px 'engravers';
+											font-size: 16px;
 										}
 									}
 								}
