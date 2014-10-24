@@ -94,6 +94,10 @@ function get_attached_images( $args=null )
 	}
 }
 
+/**
+ * Register Widgets
+ */
+
 function illustrienne_widgets()
 {
 	register_sidebar( array( 
@@ -116,6 +120,16 @@ function illustrienne_widgets()
 }
 
 add_action( 'widgets_init', 'illustrienne_widgets' );
+
+add_filter('next_posts_link_attributes', 'posts_link_attributes_1');
+add_filter('previous_posts_link_attributes', 'posts_link_attributes_2');
+
+function posts_link_attributes_1() {
+    return 'class="next-post"';
+}
+function posts_link_attributes_2() {
+    return 'class="previous-post"';
+}
 
 function updateNumbers() {
     /* numbering the published posts, starting with 1 for oldest;

@@ -28,6 +28,8 @@ CaslonC337 ItlSC
 // see use of default: http://robots.thoughtbot.com/sass-default
 $link-color: #777 !default;
 
+$placeholder: #827f7f;
+
 
 /**
 * Import Typography
@@ -119,15 +121,27 @@ pre {
 	white-space: pre-wrap;
 }
 
-input {
-	&[type='text'],
-	&[type='search']
-	{
-		border: 1px solid #d9d7d3;
-		padding: 7px 12px 7px;
-		font: 13px Arial, sans-serif;
-		text-indent: 12px;
-	}
+input[type='search'],
+input[type='text'],
+textarea {
+	border: 1px solid #d9d7d3;
+	padding: 7px 12px 7px 0;
+	font: 13px Arial, sans-serif;
+	text-indent: 12px;
+}
+
+::-moz-placeholder {
+	opacity: 1;
+	color: $placeholder;
+}
+
+::-webkit-input-placeholder {
+	opacity: 1;
+	color: $placeholder;
+}
+
+textarea {
+	resize: none;
 }
 
 /**
@@ -163,9 +177,41 @@ input {
 .sub-title {
 	color: #222;
 	font-size: 11px;
+	line-height: 13px;
 	font-family: 'futura';
 	letter-spacing: 0.55px;
 	text-transform: uppercase;
+}
+
+.post-nav {
+	padding-top: 38px;
+	@extend %post-gutter;
+	a {
+		display: inline-block;
+		min-width: 132px;
+		@include box-shadow(0 0 4px rgba(191,191,192,.58));
+		background: #fff;
+		font-size: 18px; 
+		letter-spacing: 0.9px;
+		line-height: 50px;
+		text-align: center;
+		text-decoration: none;
+		vertical-align: top;
+		&.previous-post,
+		&[rel='prev']
+		{
+			color: #777;
+			float: left;
+			font-family: 'CaslonNo337-Ita';
+		}
+		&.next-post,
+		&[rel='next']
+		{
+			color: #222;
+			float: right;
+			font-family: 'engravers';
+		}
+	}
 }
 
 /**
@@ -174,7 +220,7 @@ input {
 
 .nav {
 	@extend %clearfix;
-	#logo {
+	.logo {
 		float: left;
 	}
 	nav {
@@ -183,8 +229,12 @@ input {
 		width: 450px;
 		text-align: right;
 		ul {
+
 			> li {
 				display: inline-block;
+				position: relative;
+				padding-bottom: 25px;
+				cursor: pointer;
 				a {
 					color: #404041;
 					font-size: 11px;
@@ -196,22 +246,60 @@ input {
 						color: #777;
 					}
 				}
-				&:first-child {
-					padding: 0 33px 0 0;
+				&.menu-item-1716 {
+					margin: 0 33px 0 0;
 				}
-				&:nth-child(2) {
-					padding: 0 34px 0 0;
-					a {
+				&.menu-item-1714 {
+					margin: 0 34px 0 0;
+					> a {
 						font: 15px 'engravers';
 						letter-spacing: 0.75px;
 					}
 				}
-				&:nth-child(4) {
-					a {
+				&.menu-item-1713 {
+					> a {
 						padding: 0 11px 0 28px;
 						font: 18px 'CaslonNo337-Ita';
 						letter-spacing: 0.9px;
 						text-transform: lowercase;
+					}
+				}
+				&:hover {
+					> ul {
+						visibility: visible;
+						opacity: 1;
+						margin-top: 0;
+					}
+				}
+			}
+			.sub-menu {
+				$width: 130px;
+				@include transition(all 250ms cubic-bezier(0.420, 0.000, 0.580, 1.000));
+				visibility: hidden;
+				opacity: 0;
+				position: absolute;
+				z-index: 5;
+				top: 46px;
+				left: 50%;
+				margin-top: -5px;
+				margin-left: -($width  / 2);
+				min-width: $width;
+				padding: 0 10px;
+				background-color: #fff;
+				@include box-shadow(0 0 4px rgba(191,191,192,.58));
+				text-align: center;
+				> li {
+					display: block;
+					padding: 0;
+					a {
+						border-bottom: 1px solid #c7c7c8;
+						display: block;
+						line-height: 35px;
+					}
+					&:last-child {
+						> a {
+							border: none;
+						}
 					}
 				}
 			}
@@ -231,6 +319,14 @@ body {
 					float: left;
 					padding: 68px 0 0 28px;
 					text-align: left;
+					#menu-blog-1 {
+						> li {
+							padding: 0;
+							.sub-menu {
+								display: none;
+							}
+						}
+					}
 				}
 				#logo {
 					margin: 13px 0 0 0;
@@ -300,6 +396,21 @@ body {
 }
 
 #container {
+	#back-to-top {
+		cursor: pointer;
+		font-size: 12px;
+		letter-spacing: 0.6px;
+		text-decoration: none;
+		text-transform: uppercase;
+		&:after {
+			content: "";
+			display: inline-block;
+			margin: 0 0 0 10px;
+			width: 17px;
+			height: 9px;
+			background: transparent url('./assets/img/arrow-up.png') 0 0 no-repeat;
+		}
+	}
 	min-height: 100%;
 	padding: 0 0 45px;
 	@extend %wrapper;
@@ -314,6 +425,10 @@ body {
 		float: left;
 		width: 674px;
 		> article {			
+			padding: 80px 0 0 0;
+			&:first-child {
+				padding-top: 0;
+			}
 			img:first-of-type {
 				@extend %frame;
 				-webkit-box-sizing: content-box;
@@ -349,47 +464,76 @@ body {
 					}
 				}
 			}
+			.entry-content {
+				@extend %post-gutter;
+				p { 
+					margin: 0 0 30px;
+				}
+			}
 			.shop-the-post {
+				@extend %post-gutter;
 				color: #222;
 				h2 {
 					@extend %sub-title;
+					margin-bottom: 3px;
 				}
 				a {
 					color: inherit;
 					font: 14px 'garamond';
 				}
 			}
-			.share {
-				display: inline-block;
-				h2 {
+			> footer {
+				margin: 40px 0 0 0;
+				@extend %post-gutter;
+				.share {
 					display: inline-block;
+					float: left;
+					h2 {
+						display: inline-block;
+						margin: 0 6px 0 0;
+					}
+					a {
+						display: inline-block;
+						margin: 0 2px 0 0;
+						width: 18px;
+						height: 18px;
+						vertical-align: middle;
+						&.fb {
+							@include post-sprite(fb);
+						}
+						&.twitter {
+							@include post-sprite(twitter);
+						}
+						&.pinterest {
+							@include post-sprite(pinterest);
+						}
+						&.tumblr {
+							@include post-sprite(tumblr);
+						}
+					}
 				}
-				a {
+			
+				.comments-link {
 					display: inline-block;
-					margin: 0 2px 0 0;
-					width: 18px;
-					height: 18px;
-					vertical-align: middle;
-					&.fb {
-						@include post-sprite(fb);
-					}
-					&.twitter {
-						@include post-sprite(twitter);
-					}
-					&.pinterest {
-						@include post-sprite(pinterest);
-					}
-					&.tumblr {
-						@include post-sprite(tumblr);
+					float: right;
+					text-align: right;
+					> a {
+						color: #222;
+						text-decoration: none;
 					}
 				}
-			}
-			.posted {
-				color: #908f8f;
-				font-size: 11px;
-				a {
-					color: inherit;
-					text-decoration: none;
+				.posted {
+					clear: both;
+					padding: 4px 0 0 0;
+					color: #908f8f;
+					font-size: 11px;
+					time {
+						padding-right: 0.5em;
+					}
+					a {
+						color: inherit;
+						text-decoration: none;
+					}
 				}
 			}
 		}
@@ -460,6 +604,7 @@ body {
 			}
 		}
 		.favorites {
+			margin: 0 0 42px;
 			h2 {
 				margin: 18px 0 16px;
 				color: #222;
@@ -542,6 +687,59 @@ body {
 				}
 			}
 		}
+		.linkage {
+			padding: 0 20px 0 0;
+			.trigger {
+				clear: right;
+				margin: 0 0 6px;
+				color: #222;
+				cursor: pointer;
+				text-align: right;
+				&:after {
+					content: "";
+					display: inline-block;
+					width: 9px;
+					margin-left: 15px;
+					height: 16px;
+					vertical-align: middle;
+					background: transparent url('./assets/img/toggle-arrow.png') 0 0 no-repeat;
+				}
+				&.categories {
+					font: 16px 'engravers';
+					letter-spacing: 0.85px;
+					text-transform: uppercase;
+					&:after {
+						margin-top: -1px;
+					}
+				}
+				&.archives {
+					font: 18px 'CaslonNo337-Ita';
+					letter-spacing: 0.9px;
+					&:after {
+						margin-top: -2px;
+					}
+				}
+				&.daily-reads {
+					&:after {
+						margin-top: -3px;
+					}
+				}
+				&.active:after {
+					@include rotate(90deg);
+				}
+			}
+			ul {
+				float: right;
+				margin: 0 24px 10px 0;
+				display: none;
+				> li {
+					text-align: right;
+					a {
+						text-decoration: none;
+					}
+				}
+			}
+		}
 	}
 	.search-form {
 		margin: 32px 0 38px;
@@ -552,5 +750,99 @@ body {
 			padding-right: 27px;
 			background: transparent url('./assets/img/search.png') 95% 6px no-repeat;
 		}
+	}
+}
+
+#comments {
+	> section {
+		border: 7px solid #fff;
+		margin: 82px 0 0 0;
+		padding: 36px 72px 52px;
+		@include box-shadow(0 0 4px rgba(191,191,192,.58));
+		background: #f8f9f9;
+		> h1 {
+			margin: 0 0 40px;
+			color: #404041;
+			font: 17px 'engravers';
+			text-align: center;
+			text-transform: uppercase;
+		}
+		ul {
+			> li {
+				border-bottom: 2px solid #fff;
+				padding: 24px 0 14px;
+				&:last-child {
+					border-bottom: none;
+					padding-bottom: 0;
+				}
+				&:first-child {
+					padding-top: 0;
+				}
+				h2 {
+					margin: 0 0 4px;
+					color: #404041;
+					a {
+						color: inherit;
+					}
+					span {
+						text-transform: none;
+					}
+				}
+				time {
+					color: #908f8f;
+					font-size: 11px;
+				}
+				.comment {
+					padding: 0 0 3px;
+				}
+			}
+		}
+	}
+}
+#respond {
+	margin: 0 auto;
+	width: 640px;
+	.comment-reply-title {
+		margin: 74px 0 30px;
+		color: #444;
+		font: 18px 'CaslonNo337-Ita';
+		letter-spacing: 0.9px;
+		text-align: center;
+	}
+	#commentform {
+		p {
+			margin: 0 0 14px;
+			&.comment_notes_after {
+				margin: 6px 0 0 2px;
+				font: 11px Arial;
+				color: $placeholder;
+			}
+			&.comment-form-comment {
+				margin-bottom: 0;
+			}
+			&.form-submit {
+				overflow: hidden;
+				padding-bottom: 36px;
+			}
+		}
+		[type='submit'] {
+			border: 0;
+			float: right;
+			padding: 17px 0;
+			width: 273px;
+			background-color: #222;
+			color: #fff;
+			cursor: pointer;
+			font-size: 12px;
+			letter-spacing: 0.6px;
+			text-transform: uppercase;
+		}
+	}
+	[type='text'],
+	textarea {
+		width: 640px;
+	}
+	textarea {
+		height: 184px;
 	}
 }

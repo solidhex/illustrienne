@@ -1,2 +1,2 @@
-<a href="<?php bloginfo( 'url' ); ?>"><img src="<?php bloginfo( 'template_directory' ); ?>/assets/img/logo.gif" alt="The Illustrienne" id="logo"></a>
+<a href="<?php bloginfo( 'url' ); ?>"><img src="<?php bloginfo( 'template_directory' ); ?>/assets/img/logo.gif" alt="The Illustrienne" class="logo"></a>
 <?php wp_nav_menu( array( 'menu' => 'Blog', 'container' => 'nav' ) ); ?>
