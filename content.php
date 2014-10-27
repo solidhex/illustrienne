@@ -35,7 +35,7 @@
 				<div class="entry-content">
 					<?php the_content(); ?>
 				</div>
-				
+								
 				<?php if ( has_block('Shop The Post' ) ): ?>
 					<div class="shop-the-post">
 						<h2 class="sub-title">Shop the Post</h2>

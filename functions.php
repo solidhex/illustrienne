@@ -158,4 +158,33 @@ add_action ( 'publish_post', 'updateNumbers', 11 );
 add_action ( 'deleted_post', 'updateNumbers' );
 add_action ( 'edit_post', 'updateNumbers' );
 
+
+function illustrienne_comment( $comment, $args, $depth ) {
+	$GLOBALS['comment'] = $comment;
+	// echo "<pre>";
+	// var_dump($comment);
+	// echo "</pre>";
+?>
+
+<li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>">
+	<h2 class="author sub-title">
+		<?php if ( empty( $comment->comment_author_url )): ?>
+			<?php echo $comment->comment_author; ?> <span>said</span>
+		<?php else: ?>
+			<a href="<?php echo $comment->comment_author_url; ?>" target="_blank"><?php echo $comment->comment_author; ?></a> <span>said</span>
+		<?php endif ?>
+	</h2>
+	<?php if ( $comment->comment_approved == '0' ): ?>
+		<em>Your comment is awaiting moderation.</em>
+	<?php endif; ?>
+	<div class="comment">
+		<?php echo $comment->comment_content; ?>
+	</div>
+	<time datetime="<?php echo date( 'Y-m-d', strtotime( $comment->comment_date ) ); ?>"><?php echo date( 'F n, Y', strtotime( $comment->comment_date ) ); ?></time>
+</li>
+
+<?php 
+
+}
+
 ?>

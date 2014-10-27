@@ -27,6 +27,7 @@ CaslonC337 ItlSC
 
 // see use of default: http://robots.thoughtbot.com/sass-default
 $link-color: #777 !default;
+$hover: #777;
 
 $placeholder: #827f7f;
 
@@ -114,6 +115,10 @@ b {
 
 a {
 	color: $link-color;
+	@include transition(color 250ms cubic-bezier(0.420, 0.000, 0.580, 1.000));
+	&:hover {
+		color: $hover;
+	}
 }
 
 pre {
@@ -191,23 +196,25 @@ textarea {
 		min-width: 132px;
 		@include box-shadow(0 0 4px rgba(191,191,192,.58));
 		background: #fff;
+		color: #404041;
 		font-size: 18px; 
 		letter-spacing: 0.9px;
 		line-height: 50px;
 		text-align: center;
 		text-decoration: none;
 		vertical-align: top;
+		&:hover {
+			color: $hover;
+		}
 		&.previous-post,
 		&[rel='prev']
 		{
-			color: #777;
 			float: left;
 			font-family: 'CaslonNo337-Ita';
 		}
 		&.next-post,
 		&[rel='next']
 		{
-			color: #222;
 			float: right;
 			font-family: 'engravers';
 		}
@@ -237,13 +244,12 @@ textarea {
 				cursor: pointer;
 				a {
 					color: #404041;
-					font-size: 11px;
+					font-size: 12px;
 					letter-spacing: 1.1px;
 					text-decoration: none;
 					text-transform: uppercase;
-					@include transition(color 250ms cubic-bezier(0.420, 0.000, 0.580, 1.000));
 					&:hover {
-						color: #777;
+						color: $hover;
 					}
 				}
 				&.menu-item-1716 {
@@ -259,7 +265,7 @@ textarea {
 				&.menu-item-1713 {
 					> a {
 						padding: 0 11px 0 28px;
-						font: 18px 'CaslonNo337-Ita';
+						font: 17px 'CaslonNo337-Ita';
 						letter-spacing: 0.9px;
 						text-transform: lowercase;
 					}
@@ -294,6 +300,7 @@ textarea {
 					a {
 						border-bottom: 1px solid #c7c7c8;
 						display: block;
+						font-size: 11px;
 						line-height: 35px;
 					}
 					&:last-child {
@@ -313,6 +320,7 @@ body {
 		position: relative;
 		> section {
 			@extend %wrapper;
+			padding-top: 7px;
 			height: 157px;
 			.nav { 
 				nav {
@@ -320,15 +328,22 @@ body {
 					padding: 68px 0 0 28px;
 					text-align: left;
 					#menu-blog-1 {
+						margin-top: 3px;
 						> li {
 							padding: 0;
+							&.menu-item-1716 {
+								margin-right: 30px;
+							}
+							&.menu-item-1714 {
+								margin-right: 32px;
+							}
 							.sub-menu {
 								display: none;
 							}
 						}
 					}
 				}
-				#logo {
+				.logo {
 					margin: 13px 0 0 0;
 					width: 512px;
 				}
@@ -446,16 +461,19 @@ body {
 				h1 {
 					margin: 60px 0 3px;
 					color: #222;
-					font: 24px/26px 'garamond', georgia, serif;
+					font: 22px/24px 'garamond', georgia, serif;
 					a {
 						color: inherit;
 						text-decoration: none;
+						&:hover {
+							color: $hover;
+						}
 					}
 				}
 				h2 {
 					margin: 0 0 26px;
 					color: #404041;
-					font-size: 9.5px;
+					font-size: 10px;
 					letter-spacing: 0.7125px;
 					text-transform: uppercase;
 					a {
@@ -480,6 +498,9 @@ body {
 				a {
 					color: inherit;
 					font: 14px 'garamond';
+					&:hover {
+						color: $hover;
+					}
 				}
 			}
 			> footer {
@@ -517,9 +538,12 @@ body {
 					display: inline-block;
 					float: right;
 					text-align: right;
-					> a {
+					a {
 						color: #222;
 						text-decoration: none;
+						&:hover {
+							color: $hover;
+						}
 					}
 				}
 				.posted {
@@ -586,19 +610,18 @@ body {
 		.textwidget {
 			padding: 0 20px;
 			p {
+				color: #777;
 				font-size: 13px;
 				line-height: 22px;
-				text-align: center;
 				&:nth-of-type(2) {
 					margin: 24px 0 0 0;
-					font-size: 9.5px;
+					font-size: 10px;
 					text-transform: uppercase;
 				}
 			}
 			a {
 				display: block;
 				margin: 4px 0 0 0;
-				color: #222;
 				font: 14px 'garamond', serif;
 				text-transform: none;
 			}
@@ -608,8 +631,7 @@ body {
 			h2 {
 				margin: 18px 0 16px;
 				color: #222;
-				font-size: 12px;
-				line-height: 22px;
+				font: 12px/22px 'futura';
 				letter-spacing: 0.6px;
 			}
 			> div {
@@ -622,6 +644,9 @@ body {
 						a {
 							color: #404041;
 							text-decoration: none;
+							&:hover {
+								color: $hover;
+							}
 						}
 						cursor: pointer;
 						float: left;
@@ -639,11 +664,6 @@ body {
 						}
 						figure {
 							position: relative;
-							&:hover {
-								figcaption {
-									opacity: 1;
-								}
-							}
 							figcaption {
 								opacity: 0;
 								position: absolute;
@@ -680,6 +700,13 @@ body {
 											font-size: 16px;
 										}
 									}
+								}
+							}
+						}
+						&:hover {
+							figure {
+								figcaption {
+									opacity: 1;
 								}
 							}
 						}
@@ -836,6 +863,10 @@ body {
 			font-size: 12px;
 			letter-spacing: 0.6px;
 			text-transform: uppercase;
+			@include transition(background 250ms cubic-bezier(0.420, 0.000, 0.580, 1.000));
+			&:hover {
+				background-color: $hover;
+			}
 		}
 	}
 	[type='text'],

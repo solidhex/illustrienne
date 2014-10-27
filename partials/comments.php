@@ -1,41 +1,14 @@
 <div id="comments">
-	<?php 
-	
-		$comments = get_comments( array( 'post_id' => $post->ID ) );
+
 		
-		if ( $comments ): 
-			
-	?>
-		
-	<section>
-		<h1>comments</h1>
-		<ul>
-		
-		<?php
-			
-			foreach ( $comments as $comment ) :
-		
-		?>
-			<li>
-				<h2 class="author sub-title">
-					<?php if ( empty( $comment->comment_author_url )): ?>
-						<?php echo $comment->comment_author; ?> <span>said</span>
-					<?php else: ?>
-						<a href="<?php echo $comment->comment_author_url; ?>" target="_blank"><?php echo $comment->comment_author; ?></a> <span>said</span>
-					<?php endif ?>
-				</h2>
-				<div class="comment">
-					<?php echo $comment->comment_content; ?>
-				</div>
-				<time datetime="<?php echo date( 'Y-m-d', strtotime( $comment->comment_date ) ); ?>"><?php echo date( 'F n, Y', strtotime( $comment->comment_date ) ); ?></time>
-			</li>
-	
-		<?php endforeach; ?>
-	
-		</ul>
-	</section>
-	
-	<?php endif; ?>
+	<?php if ( have_comments() ): ?>
+		<section>
+			<h1>comments</h1>
+			<ul>
+				<?php wp_list_comments( array( 'callback' => 'illustrienne_comment' ) ); ?>
+			</ul>
+		</section>
+	<?php endif ?>
 	
 	<?php 
 	
