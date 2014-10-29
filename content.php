@@ -46,7 +46,7 @@
 				<footer>
 					<div class="share">
 						<h2 class="sub-title">Share</h2>
-						<a href="#" class="fb"></a><a href="#" class="twitter"></a><a href="#" class="pinterest"></a><a href="#" class="tumblr"></a>
+						<a class="fb" href="http://www.facebook.com/sharer.php?u=<?php echo urlencode( get_permalink( $post->ID) ); ?>&amp;t=" target="_blank"></a><a href="https://twitter.com/intent/tweet?text=<?php echo urlencode( $post->post_title ); ?>&amp;url=<?php echo urlencode( wp_get_shortlink() ); ?>" class="twitter"></a><a href="javascript: void((function()%7Bvar%20e=document.createElement('script'); e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','http://assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);document.body.appendChild(e)%7D)());" class="pinterest"></a><a href="http://www.tumblr.com/share/link?url=<?php echo urlencode( get_permalink( $post->ID) ); ?>&amp;name=<?php the_title(); ?>" class="tumblr" target="_blank"></a>
 					</div>
 				
 					<div class="comments-link sub-title">

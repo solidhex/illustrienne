@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title><?php bloginfo( 'name' ); ?> | <?php bloginfo( 'description' ); ?></title>
+	<link rel="shortcut icon" href="<?php echo get_stylesheet_directory_uri(); ?>/favicon.ico" />
+	<title><?php wp_title('|', true, 'right'); bloginfo('name'); ?></title>
 	<link rel="stylesheet" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
 	<?php 
 	    /* Always have wp_head() just before the closing </head>

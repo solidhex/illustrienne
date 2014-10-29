@@ -29,19 +29,18 @@ var App = App || {};
 	};
 	
 	App.postSharing = function () {
-		// $(".post").on("click", ".share a", function (e) {
-//
-// 			var $el = $(this);
-//
-// 			if ($el.hasClass("twitter")) {
-// 				console.log("FOUND TWITTER LINK");
-// 			} else {
-// 				console.log("No sharing matches");
-// 				return false;
-// 			}
-//
-// 			e.preventDefault();
-// 		})
+		$(".share").on("click", "a", function (e) {
+		
+			switch ($(this).attr("class")) {
+			case "fb":
+				e.preventDefault();
+				window.open($(this).attr("href"), 'sharer', 'toolbar=0,status=0,width=548,height=325');
+				break;
+			default:
+				
+			}
+			
+		});
 	};
 	
 	$(function () {

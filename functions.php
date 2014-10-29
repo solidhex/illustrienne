@@ -181,7 +181,7 @@ function illustrienne_comment( $comment, $args, $depth ) {
 		<?php echo $comment->comment_content; ?>
 	</div>
 	<time datetime="<?php echo date( 'Y-m-d', strtotime( $comment->comment_date ) ); ?>"><?php echo date( 'F n, Y', strtotime( $comment->comment_date ) ); ?></time>
-</li>
+
 
 <?php 
 
