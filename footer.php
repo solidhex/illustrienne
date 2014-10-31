@@ -4,7 +4,7 @@
 	</section>
 	<div class="colophon">
 		<div>
-			<div class="sosumi">&copy; <?php echo date( 'Y' ); ?> <?php bloginfo( 'name' ); ?>. All Rights Reserved. &nbsp;<span class="credits">Design by <a href="http://www.hidesignhouse.com/" target="_blank">Hi Design</a></span>
+			<div class="sosumi">&copy; <?php echo date( 'Y' ); ?> <?php bloginfo( 'name' ); ?>. All Rights Reserved.
 			</div>
 			<?php get_template_part( 'partials/social' ); ?>
 		</div>

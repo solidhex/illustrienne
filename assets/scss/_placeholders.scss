@@ -18,5 +18,5 @@
 
 %frame {
 	border: 7px solid #fff;
-	@include box-shadow(0 0 4px rgba(191,191,192,.58));
+	@include box-shadow(0 0 4px rgba(191,191,192,1));
 }
