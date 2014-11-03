@@ -21,8 +21,6 @@
     <?php endif; ?>
 	
 	<?php get_sidebar(); ?>
-	
-	<!-- <a id="back-to-top">back to top</a> -->
 </div><!-- eof #container -->
 
 <?php get_footer(); ?>

@@ -46,7 +46,7 @@ $placeholder: #827f7f;
 * Import Mixins
 */
 
-/*@import "mixins";*/
+@import "mixins";
 
 /**
 * Import Placeholders
@@ -90,6 +90,7 @@ $placeholder: #827f7f;
 html,
 body {
 	height: 100%;
+	font-size: 62.5%;
 }
 
 body {
@@ -411,21 +412,6 @@ body {
 }
 
 #container {
-	#back-to-top {
-		cursor: pointer;
-		font-size: 12px;
-		letter-spacing: 0.6px;
-		text-decoration: none;
-		text-transform: uppercase;
-		&:after {
-			content: "";
-			display: inline-block;
-			margin: 0 0 0 10px;
-			width: 17px;
-			height: 9px;
-			background: transparent url('./assets/img/arrow-up.png') 0 0 no-repeat;
-		}
-	}
 	min-height: 100%;
 	padding: 28px 0 45px;
 	@extend %wrapper;

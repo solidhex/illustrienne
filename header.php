@@ -5,6 +5,7 @@
 	<link rel="shortcut icon" href="<?php echo get_stylesheet_directory_uri(); ?>/favicon.ico" />
 	<title><?php wp_title('|', true, 'right'); bloginfo('name'); ?></title>
 	<link rel="stylesheet" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
+	<meta name="viewport" content="width=1024">
 	<?php 
 	    /* Always have wp_head() just before the closing </head>
 	     * tag of your theme, or you will break many plugins, which
