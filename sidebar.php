@@ -25,6 +25,7 @@
 			
 				$args = array(
 					'post_type' => 'post',
+					'posts_per_page' => 10,
 					'meta_query' => array(
 						array(
 							'key' => 'featured_post',

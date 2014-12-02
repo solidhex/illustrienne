@@ -54,7 +54,7 @@
 					</div>
 				
 					<p class="posted">
-						<time datetime="<?php the_time( 'Y-m-d' ); ?>"><?php the_time( 'F n, Y' ); ?></time>
+						<time datetime="<?php the_time( 'Y-m-d' ); ?>"><?php the_time( 'F j, Y' ); ?></time>
 						<span class="post-cats">
 						<?php
 							$cats = get_the_category();
