@@ -71,7 +71,7 @@
 			<h3 class="trigger categories">Categories</h3>
 		
 			<ul>
-				<?php wp_list_categories( array( 'title_li' =>  '', 'depth' => 1 ) ); ?>
+				<?php wp_list_categories( array( 'title_li' =>  '', 'depth' => -1 ) ); ?>
 			</ul>
 		
 			<h3 class="trigger archives">the archives</h3>
