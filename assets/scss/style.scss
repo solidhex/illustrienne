@@ -391,6 +391,9 @@ body {
 					&.instagram {
 						@include footer-sprite(instagram);
 					}
+					&.tumblr {
+						@include footer-sprite(tumblr);
+					}
 					&:last-child {
 						margin-right: 53px;
 					}
@@ -577,6 +580,9 @@ body {
 				}
 				&.instagram {
 					@include sidebar-sprite(instagram);
+				}
+				&.tumblr {
+					@include sidebar-sprite(tumblr);
 				}
 				&:hover {
 					opacity: 0.75;
