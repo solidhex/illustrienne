@@ -2,7 +2,13 @@
 	
 	<aside role="complementary">
 		
-		<?php get_template_part( 'partials/social' ); ?>
+		<?php 
+			get_template_part( 'partials/social' ); 
+		?>
+		
+		<div class="rss">
+			SUBSCRIBE VIA <a href="<?php bloginfo( 'rss2_url' ) ?>" target="_blank">RSS</a>
+		</div>
 				
 		<?php if ( is_active_sidebar ('sidebar') ): ?>
 			<?php dynamic_sidebar( 'sidebar' ); ?>

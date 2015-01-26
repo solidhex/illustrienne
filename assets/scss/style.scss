@@ -558,10 +558,21 @@ body {
 		float: right;
 		width: 320px;
 		color: #404041;
+		.rss {
+			display: inline-block;
+			padding: 7px 0 0 7px;
+			font-size: 9.5px;
+			letter-spacing: 0.475px;
+			vertical-align: top;
+			a {
+				color: #404041;
+			}
+		}
 		.sharing {
-			margin: 7px 0 23px;
+			margin: 7px 0 23px 44px;
 			font-size: 0;
-			text-align: center;
+			display: inline-block;
+			//text-align: center;
 			line-height: 1;
 			a {
 				display: inline-block;
