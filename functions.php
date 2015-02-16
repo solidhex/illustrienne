@@ -95,6 +95,22 @@ function get_attached_images( $args=null )
 }
 
 /**
+ * Pull featured image into feed
+ */
+
+add_filter( 'the_content', 'featured_image_in_feed' );
+function featured_image_in_feed( $content ) {
+    global $post;
+    if( is_feed() ) {
+        if ( has_post_thumbnail( $post->ID ) ){
+            $output = get_the_post_thumbnail( $post->ID, 'medium');
+            $content = $output . $content;
+        }
+    }
+    return $content;
+}
+
+/**
  * Register Widgets
  */
 
